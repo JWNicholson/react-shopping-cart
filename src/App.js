@@ -16,17 +16,30 @@ function App() {
 		// add the given item to the cart
 	  setCart([...cart, item]);
 	};
+
+
+	//const to remove item from cart
+	//filter items for items that are not the one user wants to delete
+	const removeItem  = item => {
+		const items = cart.filter(items => items.id !==item );
+		setCart([...items])
+	}
   
-	return (
-	  <div className="App">
+	return ( <div className="App">
+	  
 		<ProductContext.Provider value={{ products, addItem }}>
+			{/* need a ProductCOntex.Provider to remove item from cart*/}
 		  <CartContext.Provider value={cart}>
+		 
 			<Navigation cart={cart} />
   
 			{/* Routes */}
 			<Route exact path="/" component={Products} />
   
-			<Route path="/cart" render={() => <ShoppingCart cart={cart} />} />
+			<Route path="/cart" 
+			//render={() => <ShoppingCart cart={cart} />} 
+			component={ShoppingCart}
+			/>
 
 		  </CartContext.Provider>
 		</ProductContext.Provider>
