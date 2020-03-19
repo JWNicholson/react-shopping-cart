@@ -9,7 +9,9 @@ const Item = props => {
 			<div>
 				<h1>{props.title}</h1>
 				<p>$ {props.price}</p>
-				<button>Remove from cart</button>
+				{/* write an onclick method to remove item using item's id */}
+				<button onClick={ () => props.removeItem(props.id)}>Remove from cart</button>
+			
 			</div>
 		</div>
 	);
