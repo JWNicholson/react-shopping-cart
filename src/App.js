@@ -20,14 +20,13 @@ function App() {
 
 	//const to remove item from cart
 	//filter items for items that are not the one user wants to delete
-	const removeItem  = item => {
-		const items = cart.filter(items => items.id !==item );
-		setCart([...items])
+	const removeItem = id => {
+		setCart(cart.filter((item) => item.id !==id));
 	}
-  
+
 	return ( <div className="App">
 	  
-		<ProductContext.Provider value={{ products, addItem }}>
+		<ProductContext.Provider value={{ products, addItem, removeItem }}>
 			{/* need a ProductCOntex.Provider to remove item from cart*/}
 		  <CartContext.Provider value={cart}>
 		 
@@ -37,7 +36,7 @@ function App() {
 			<Route exact path="/" component={Products} />
   
 			<Route path="/cart" 
-			//render={() => <ShoppingCart cart={cart} />} 
+			
 			component={ShoppingCart}
 			/>
 
